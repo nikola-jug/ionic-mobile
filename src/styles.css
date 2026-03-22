@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Core Ionic CSS — required for safe area insets, layout, and typography */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+
+ion-content {
+  --padding-top: env(safe-area-inset-top);
+}
