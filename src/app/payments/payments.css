@@ -1,0 +1,25 @@
+.error-banner {
+  color: var(--ion-color-danger);
+  text-align: center;
+}
+
+.status {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status.completed {
+  color: var(--ion-color-success);
+}
+
+.status.pending {
+  color: var(--ion-color-warning);
+}
+
+.status.failed {
+  color: var(--ion-color-danger);
+}
+
+.actions {
+  margin-top: 1rem;
+}

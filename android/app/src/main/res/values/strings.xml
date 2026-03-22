@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BFF Mobile</string>
+    <string name="title_activity_main">BFF Mobile</string>
+    <string name="package_name">io.tacta.ionicbff</string>
+    <string name="custom_url_scheme">io.tacta.ionicbff</string>
+</resources>

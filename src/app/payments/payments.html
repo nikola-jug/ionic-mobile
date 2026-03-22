@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (error(); as msg) {
+    <div class="error-banner ion-padding">
+      <p>{{ msg }}</p>
+      <ion-button fill="clear" (click)="goToProfile()">Back to Profile</ion-button>
+    </div>
+  }
+
+  @if (payments().length > 0) {
+    <ion-list inset="true">
+      @for (payment of payments(); track payment.id) {
+        <ion-item>
+          <ion-label>
+            <h3>{{ payment.amount }} {{ payment.currency }}</h3>
+            <ion-note>{{ payment.id }}</ion-note>
+          </ion-label>
+          <ion-note slot="end" [class]="'status ' + payment.status.toLowerCase()">
+            {{ payment.status }}
+          </ion-note>
+        </ion-item>
+      }
+    </ion-list>
+  }
+
+  <div class="actions ion-padding">
+    <ion-button expand="block" fill="outline" color="danger" (click)="logout()">Logout</ion-button>
+  </div>
+</ion-content>
