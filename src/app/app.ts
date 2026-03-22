@@ -1,5 +1,7 @@
 import { Component, inject, NgZone, OnInit } from '@angular/core';
 import { App as CapacitorApp } from '@capacitor/app';
+import { Browser } from '@capacitor/browser';
+import { Capacitor } from '@capacitor/core';
 import { IonApp, IonRouterOutlet, NavController } from '@ionic/angular/standalone';
 import { AuthService } from './auth/auth.service';
 
@@ -22,6 +24,14 @@ export class App implements OnInit {
         const code = parsed.searchParams.get('code');
 
         console.log('[appUrlOpen] url:', url, 'code:', code);
+
+        // Close SFSafariViewController on iOS — it does not auto-close on custom URL schemes.
+        // On Android the Chrome Custom Tab is already gone when appUrlOpen fires, so
+        // calling Browser.close() there can cause a spurious activity resume that
+        // re-shows the home screen and fires a second appUrlOpen with no code.
+        if (Capacitor.getPlatform() === 'ios') {
+          Browser.close();
+        }
 
         if (code) {
           this.authService.exchangeSession(code).subscribe({

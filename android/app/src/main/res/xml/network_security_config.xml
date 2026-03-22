@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Trusts the local mkcert CA in debug builds so that OkHttp (used by CapacitorHttp)
+  accepts our self-signed TLS certificates. The cert file (mkcert_ca.pem) is copied
+  from certs/rootCA.pem by run-android.sh before each build and is not committed.
+-->
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="@raw/mkcert_ca"/>
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

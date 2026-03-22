@@ -42,7 +42,10 @@ export class AuthService {
         this.profile.set(profile);
         this.loaded = true;
       }),
-      catchError(() => of(null)),
+      catchError((err) => {
+      console.error('[exchangeSession] failed:', JSON.stringify(err));
+      return of(null);
+    }),
     );
   }
 
